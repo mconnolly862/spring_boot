@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" />
+
+<!-- jQuery library -->
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
+<!-- Custom Styles  -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  <link rel="icon" href="../static/favicon.ico"/>
+  <link href="https://fonts.googleapis.com/css?family=Oswald&display=swap" rel="stylesheet">
+
+<title>Movie Docker</title>
+<style>
+/* Make the image fully responsive */
+.carousel-inner img {
+	width: 100%;
+	height: 90%;
+}
+
+.centered {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  font-family: 'Oswald', sans-serif;
+  font-size:100px;
+ opacity:0.67;
+  color:white;
+  transform: translate(-50%, -50%);
+}
+nav
+{
+background-color:#BD83FF;
+}
+</style>
+</head>
+
+<body>
+	<nav class="navbar navbar-expand-sm navbar-dark" style="background-color:#523B73;">
+		<ul class="navbar-nav">
+			<li class="nav-item active"><a class="nav-link" href="/">Home</a>
+			</li>
+		<li class="nav-item"><a class="nav-link" href="/todo">Tasks</a>
+			</li>
+			<li class="nav-item"><a class="nav-link" href="albums">Completed</a>
+			</li>
+			<li class="nav-item"><a class="nav-link" href="albums">InCompleted</a>
+			</li>
+		</ul>
+	</nav>
+	<div id="demo" class="carousel slide" data-ride="carousel">
+
+		<!-- Indicators -->
+		<ul class="carousel-indicators">
+			<li data-target="#demo" data-slide-to="0" class="active"></li>
+			<li data-target="#demo" data-slide-to="1"></li>
+			<li data-target="#demo" data-slide-to="2"></li>
+		</ul>
+
+		<!-- The slideshow -->
+		<div class="carousel-inner" style="z-index:-1;">
+			<div class="carousel-item active">
+				<img src="../static/hd.png" alt="" width="1100"
+					height="500px" th:src="@{/hd.png}">
+			</div>
+			<div class="carousel-item">
+				<img src="../static/toy.gif" alt="" width="1100"
+					height="500px" th:src="@{/hd2.png}">
+			</div>
+			<div class="carousel-item">
+				<img src="../static/toy.gif" alt="" width="1100" height="500px"
+					th:src="@{/hd3.png}">
+			</div>
+		</div>
+
+		<!-- Left and right controls -->
+		<a class="carousel-control-prev" href="#demo" data-slide="prev"> <span
+			class="carousel-control-prev-icon"></span>
+		</a> <a class="carousel-control-next" href="#demo" data-slide="next">
+			<span class="carousel-control-next-icon"></span>
+		</a>
+		<div class="centered">MicBoard</div>
+	</div>
+
+
+<!--Here contains all the content of the overall site(s) -->
+
+	<div class="jumbotron text-center" style="z-index:999; background-color:none; background-opacity:0;">
+
+		<h1>Top ten Artists of the world</h1>
+		<p></p>
+		<h2></h2>
+		<br />
+
+	</div>
+	
+<!-- Section that is split into to a grid system of 4-col and 8-col -->
+	<div class="container-fluid">
+
+		<div class="row">
+			<div class="col-sm-4">
+				<h2></h2>
+				<p></p>
+			</div>
+			<div class="col-sm-8">
+				
+			</div>
+		</div>
+		
+		
+		<div class="row" th:each="top: ${topten}" style="text-align:centre; margin: 0 auto;">
+			<div class="col-sm-2" style="text-align:centre; margin:0 auto; float:centre;">
+				<h2 th:text="${top.rank}" style="text-align:centre; margin-left:30%;"></h2>
+				<p></p>
+			</div>
+			<div class="col-sm-7">
+				<img src ="" style="background-size:fill; width:100%; margin:2%;"  th:src="@{/img/} + ${top.image}"/>
+
+			</div>
+				<div class="col-sm-3" style="font-size:40px; text-align:centre; margin-top:20%; padding-right:2%;" th:text="${top.name}">
+				
+
+			</div>
+		</div>
+		
+		<!-- <table class="table-stripped">
+    <thead>
+    	<tr>
+    	<th>Name</th><th>Picture</th><th>Rank</th>
+   	 	</tr>
+    </thead>
+    
+    <tbody>
+    
+    <tr th:each="top: ${topten}">
+ 
+    <td th:text="${top.name}"></td>
+    <td><img src= "" th:src="@{/img/} + ${top.image}"/>
+    </td>
+      <td th:text="${top.rank}"></td>
+    
+    </tr>
+    </tbody>
+    </table> -->
+		
+	</div>
+<!-- Additional content set up ad a grid  -->
+
+
+
+
+</body>
+</html>
